@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://1.bp.blogspot.com/-3za0XKJuLSc/WNfUgBtwwFI/AAAAAAAAGiQ/ADAfpkEiUn0w6FHDjMpt-i3PzYyMBtNQQCLcB/s1600/1.png"></h1>
+<h1 align="center"><img src="https://raw.githubusercontent.com/danpros/htmly/master/system/resources/images/logo-big.png"></h1>
 
 [Sekilas Tentang](#sekilas-tentang) | [Instalasi](#instalasi) | [Konfigurasi](#konfigurasi) | [Otomatisasi](#otomatisasi) | [Cara Pemakaian](#cara-pemakaian) | [Pembahasan](#pembahasan) | [Referensi](#referensi)
 :---:|:---:|:---:|:---:|:---:|:---:|:---:
@@ -8,11 +8,11 @@
 # Sekilas Tentang
 [`^ kembali ke atas ^`](#)
 
-HTMLy adalah open source Databaseless Blogging Platform atau Flat-File Blog yang mengutamakan kesederhanaan dan kecepatan yang ditulis dalam PHP. HTMLy merupakan Flat-File CMS yang baik dalam mengelola konten blog.
+**HTMLy** adalah *Databaseless Blogging Platform* atau Flat-File Blog yang *open source* dan mengutamakan kesederhanaan serta kecepatan, yang ditulis dalam `PHP`. HTMLy disebut juga sebagai Flat-File CMS yang baik karena dapat mengelola konten dari user.
 
 HTMLy menggunakan algoritme unik untuk menemukan atau mencantumkan konten berdasarkan tanggal, jenis, kategori, tag, atau pengarang, dan kinerjanya akan tetap berjalan dengan cepat meskipun kita memiliki ribuan pos dan ratusan tag.
 
-Sebagai flat-file blog atau flat-file CMS, HTMLy didesain untuk berjalan lancar meski menggunakan spesifikasi server minimal. Dengan RAM 512MB atau bahkan kurang, bisa menangani lebih dari sepuluh ribu postingan tanpa masalah.
+Sebagai flat-file blog atau flat-file CMS, HTMLy didesain untuk berjalan lancar meski menggunakan spesifikasi server minimal. Dengan RAM 512MB atau bahkan kurang, HTMLy bisa menangani lebih dari 10.000 posting tanpa masalah apapun.
 
 
 
@@ -22,121 +22,111 @@ Sebagai flat-file blog atau flat-file CMS, HTMLy didesain untuk berjalan lancar 
 
 #### Kebutuhan Sistem :
 - Unix, Linux atau Windows.
-- Apache Web server 1.3+.
-- PHP 5.2+.
-- MySQL 5.0+.
-- RAM minimal 64 Mb+
+- PHP versi >= 5.3
+- PHP-XML package
+- Web Server(Apache2).
+
+#### Virtual private server membutuhkan:
+- virtual box
+- ubuntu-server.vdi
 
 #### Proses Instalasi :
-1. Login kedalam server menggunakan SSH. Untuk pengguna windows bisa menggunakan aplikasi [PuTTY](http://www.putty.org/).
-    ```
-    $ ssh adam@172.18.88.88 -p 22
-    ```
+##### Instalasi Virtual Private Server
+A. Setting port-forwarding VM
 
-2. Pastikan seluruh paket sistem kita *up-to-date*, dan install seluruh kebutuhan sisrem seperti `Apache`, `PHP`, dan `MySQL`.
-    ```
-    $ sudo apt-get update
-    $ sudo apt-get install apache2
-    $ sudo apt-get install mysql-server
-    $ sudo apt-get install php
-    $ sudo apt-get install libapache2-mod-php
-    $ sudo apt-get install php-mysql
-    $ sudo apt-get install php-gd php-mcrypt php-mbstring php-xml php-ssh2 php-curl php-zip php-intl
-    $ sudo apt-get install unzip
-    ```
+   **Install Virtual Private Server**
+   
+   1. Buka virtualbox
+   2. masuk 'Settings -> Network -> Advanced -> Port Forwarding' dan tambahkan dua aturan berikut.
 
-3. Unduh **Prestashop** ke dalam direktori kita. 
-    ```
-    $ wget https://download.prestashop.com/download/releases/prestashop_1.7.0.5.zip
-    ```
+Name   | Protocol   | Host IP    | Host Port  | Guest IP   | Guest Port
+----   | --------   | -------    | ---------  | --------   | ----------
+http   | TCP        |            | 8888       |            | 80
+ssh    | TCP        |            | 2222       |            | 22
 
-4. Ekstrak file yang telah diunduh ke dalam direktori yang kita inginkan.
-    ```
-    $ sudo unzip prestashop_1.7.0.5.zip -d /var/www/html/prestashop
-    ```
+sehingga jika kita mengakses localhost:8888 di host, maka akan diteruskan ke localhost:80 di guest (VM).
 
-5. Ubah otorisasi kepemilikan ke user www-data (webserver)
-    ```
-    $ sudo chown -R www-data:www-data /var/www/html/prestashop
-    ```
+3. kemudian  jalankan VM dengan login username student dan password student.
 
-6. Buat database dan user untuk **Prestashop**.
-    ```
-    $ mysql -u root -p -v -e "
-        CREATE DATABASE prestashop;
-        CREATE USER 'prestashopuser'@'localhost' IDENTIFIED BY 'prestashoppassword';
-        GRANT ALL PRIVILEGES ON `prestashop`.* TO 'prestashopuser'@'localhost';
-        FLUSH PRIVILEGES;"
-    ```
+**Instalasi LAMP (Linux Apache MySQL PHP)**
 
-7. Konfigurasi Apache web server.
-    ```
-    $ sudo a2enmod rewrite
-    $ sudo touch /etc/apache2/sites-available/prestashop.conf
-    $ sudo ln -s /etc/apache2/sites-available/prestashop.conf /etc/apache2/sites-enabled/prestashop.conf
-    $ sudo nano /etc/apache2/sites-available/prestashop.conf
+##### a. Instal SSH
+	sudo apt update
+	sudo apt install ssh
+Setelah terinstal SSH, kita bisa mengakses VM secara remote. Buka terminal di host untuk login remote ke port 2222.
+##### b. akses remote dari host
+	ssh student@localhost -p 2222
 
-    <VirtualHost *:80>
-    ServerAdmin admin@your-domain.com
-    DocumentRoot /var/www/html/prestashop/
-    ServerName your-domain.com
-    ServerAlias www.your-domain.com
-    <Directory /var/www/html/prestashop/>
-    Options FollowSymLinks
-    AllowOverride All
-    Order allow,deny
-    allow from all
-    </Directory>
-    ErrorLog /var/log/apache2/your-domain.com-error_log
-    CustomLog /var/log/apache2/your-domain.com-access_log common
-    </VirtualHost>
-    ```
+##### c. instal Apache, MySQL, PHP
+	sudo apt install apache2
+	sudo apt install mysql-server
+	sudo apt install php
+	sudo apt install libapache2-mod-php
+	sudo apt install php-mysql
+	sudo apt install php-gd php-mcrypt php-mbstring php-xml php-ssh2
+	sudo service apache2 restart
+Cek instalasi Apache dengan membuka laman http://localhost:8888.
 
-8. Edit file `etc/php/7.0/apache2/php.ini` dan tambahkan baris berikut :
-    ```
-    memory_limit = 128M
-    upload_max_filesize = 16M
-    max_execution_time = 60
-    file_uploads = On
-    allow_url_fopen = On
-    magic_quotes_gpc = Off
-    register_globals = Off
-    ```
+##### Instalasi HTMLy
 
-9. Restart kembali Apache web server.
-    ```
-    $ sudo service apache2 restart
-    ```
+1.Ubah status menjadi superuser agar mendapatkan permission yang penuh.
 
-10. Kunjungi alamat IP web server kita untuk meneruskan instalasi.
-    - Pilih Bahasa yang akan digunakan
+	$ sudo su
+    
+2.Masuk ke directory /var/www/html pada host.
 
-      ![1](https://4.bp.blogspot.com/-4Bd2ScecDIs/WNfZ0H8j3UI/AAAAAAAAGjE/9f7Knlqzgw0a0Lgd2AVQ7Qt53bI-Of8bACLcB/s1600/36.PNG)
+	$ cd /var/www/html
 
-    - Setujui persyaratan yang berlaku
+3.Lakukan cloning repository htmly dari github
 
-      ![2](https://4.bp.blogspot.com/-mglU1XDt-T0/WNfZ0OJ7n8I/AAAAAAAAGjI/bG23YpPUkyEOCiozy1_Qc4TnA29bJw0lACLcB/s1600/37.PNG)
+	$ git clone "https://github.com/danpros/htmly"
+    
+4.Masuk ke directory htmly
+	
+    $ cd htmly
+    
+5.Kemudian donwload juga file installer.php
 
-    - Cek kecocokan sistem
+	$ wget "https://github.com/danpros/htmly/releases/download/v2.7.4/installer.php"
+    
+6.Ubah kepemilikan ke user www-data (webserver)
 
-      ![3](https://3.bp.blogspot.com/-ewzlTX1qtmw/WNfZ0HTeFuI/AAAAAAAAGjM/edNiBt1f24Qt4x4sWCoCHfyo7JXWWmoZwCLcB/s1600/38.PNG)
+	$ sudo chown -R www-data:www-data /var/www/html/htmly
+    
+7.Buka halaman http://localhost:8888/htmly/installer.php untuk instalasi lebih lanjut.
 
-    - Isi informasi tentang toko yang kita buat
+-------------
+                                                                    
+jika pada saat membuka **http://localhost:8888/htmly/installer.php** terdapat **error: no permission to write in the Directory** serta **Warning:Your rewriteRule is not ready to use. Help!** 
 
-      ![4](https://2.bp.blogspot.com/-Q5cCz5hyubQ/WNfZ1FZod9I/AAAAAAAAGjU/H_uUfxtZLUE11VPDafwK8jR3-aealPKcgCLcB/s1600/39.png)
+lakukan langkah berikut:
 
-    - Konfigurasi database
+Set Up mod_rewrite for Apache
 
-      ![5](https://1.bp.blogspot.com/-rh08nNV2Leg/WNfZ1DAaDOI/AAAAAAAAGjY/R5oIKIMI4rYjg7gO71MgR26JSMahxtpxgCLcB/s1600/40.PNG)
+1.Enabling mod_rewrite
 
-    - Lanjutkan proses instalasi
+	$ sudo a2enmod rewrite
+    
+2.Lakukan modifikasi pada file .htacces dengan membuka file default apache configuration
 
-      ![6](https://3.bp.blogspot.com/-t2MrsQBYXBU/WNfZ0x4YoWI/AAAAAAAAGjQ/zOqZVNSFIpQkQjY0awofbetdEowQLdGAwCLcB/s1600/41.PNG)
+	$ sudo nano /etc/apache2/sites-enabled/000-default.conf
 
-11. Setelah proses instalasi selesai hapus direktori install untuk alasan keamanan.
-    ```
-    $ sudo rm -rf /var/www/html/prestashop/install
-    ```
+3.Didalam file anda akan menemukan blcok <VirtualHost *:80> masukkan block berikut pada line 1, kemudian save.
+
+	...
+	<Directory /var/www/html>
+    	Options Indexes FollowSymLinks MultiViews
+    	AllowOverride All
+    	Order allow,deny
+    	allow from all
+	</Directory>
+	...
+    
+4.Restart apache
+
+	$ sudo service apache2 restart
+    
+5.coba akses kembali **http://localhost:8888/htmly/installer.php**. seharusnya sudah bisa melakukan instalasi.
 
 
 
@@ -182,20 +172,28 @@ Ketika kita ingin memodifikasi toko yang sudah terinstall, kita mungkin tidak in
 # Otomatisasi
 [`^ kembali ke atas ^`](#)
 
-Jika kalian masih merasa kesulitan dalam meng-install **Prestashop**, terdapat dua cara alternatif yang lebih mudah. Cara pertama adalah dengan menggunakan `script shell` yang otomatis akan menjalankan semua perintah instalasi pada terminal. Contoh `script shell` yang dapat kita gunakan adalah [setup.sh](../master/setup.sh)
+Jika terasa sulit jika diinstal melalui cara sebelumnya, HTMLy juga dapat diinstal dengan menggunakan web installer dan juga zip archive.
 
-Cara kedua adalah dengan menggunakan layanan yang tersedia pada *web-hosting provider*. Dengan layanan tersebut kita hanya perlu satu kali klik untuk meng-install **Prestashop**. Berikut langkah-lankah untuk melakukannya :
-1. kita perlu mengunjungi *web-hosting provider* yang menyediakan *script* instalasi **prestashop** otomatis, seperti [SimpleScripts](http://www.simplescripts.com/script_details/install:PrestaShop), [Installatron](http://installatron.com/prestashop), atau [Softaculous](http://www.softaculous.com/apps/ecommerce/PrestaShop).
-2. Sebagai contoh, kita akan menggunakan layanan dari [Installatron](http://installatron.com/prestashop). Kunjungi link tersebut lalu klik tombol **Install this Application**.
+#### Web Installer
+1. Download installer.php di https://github.com/danpros/htmly/releases/tag/v2.7.4
+2. Masukan ke dalam  folder root web misal /var/www/htmly
+3. Kunjungi domainmu www.example.com/installer.php
 
-    ![Installatron](https://4.bp.blogspot.com/-PGjmovGOoOc/WNgQDHbE1RI/AAAAAAAAGk0/90dTTmH15cY6WSWqr8UU8BPETQs4KyxnACLcB/s1600/Screenshot_8.jpg)
+#### Zip Archive
+1. Download versi terakhir, ekstrak, dan kemudian upload file yang telah diekstrak ke server. Pastikan folder instalasi dapat ditulis oleh server
 
-3. Isi semua informasi yang dibutuhkan, lalu klik tombol **Install**.
+2. Konfigurasi manual
+```
+1. Ubah config.ini.example didalam folder config, menjadi config.ini (atau bisa membuat file config/config.ini baru.
 
-    ![form](https://4.bp.blogspot.com/-5UwbsHAaBe0/WNgQDDjFdhI/AAAAAAAAGk4/coOLiqqP2DcVxq-hHwFa9cVW3P_t6p1tQCLcB/s1600/ss2.png)
+2. Buat YourUsername.ini didalam folder config/users atau rename file username.ini.example dan tulis passwordmu disana:
 
-4. Tunggu hingga proses instalasi selesai.
-
+	password = YourPassword
+    
+3. Sebagai tambahan, HTMLy mensupport role user admin, dengan menambah line role = admin ke user yang telah dipilih.
+	- User yang mempunyai role admin bisa mengedit/mendelete semua post user.
+	- Untuk mengakses panel admin, add/login dapat dengan menambahkannya dalam akhir alamat web contoh  www.yoursite.com/login
+```
 
 
 # Cara Pemakaian
@@ -262,7 +260,7 @@ Cara pemakaian **HTMLy** ini sangat mudah, karena aplikasi ini menyediakan *inte
     
 
 8. Menu **Config** digunakan untuk mengatur tampilan Blog.
-
+	- ![5](31.PNG)
    
 
 9. Menu **Logout** untuk keluar dari akun blog kita. Berikut ini tampilan setelah keluar dari blog.
@@ -287,11 +285,17 @@ HTMLy adalah Databaseless Blogging Platform yang open source dan mengutamakan ke
 
 Jika dibandingkan dengan CMS sejenisnya seperti Magento, CMS ini memiliki beberapa 		keunggulan dan kelemahan. Berikut adalah beberapa perbandingan antara kedua CMS ini :
 
+HTMLy   | Magento   
+----   | --------  
+Resource HTMLy kecil, sehingga HTMLy cepat digunakan   | Resource yang cukup besar, sehingga mengakibatkan magento cenderung lebih berat dan lama untuk melakukan loading     
+Semua fitur dalam HTMLy free    | Beberapa fitur dan juga plugin yang berbayar, dan hanya sedikit yang sifatnya gratis
+Proses Installasi mudah | Proses installasi lebih rumit dibandingkan HTMLy
+Tampilan kurang menarik | Sangat kaya akan fitur yang menarik
+
+
 # Referensi
 [`^ kembali ke atas ^`](#)
 
-1. [About PrestaShop](https://www.prestashop.com/) - PrestaShop
-2. [How to Log Into a VPS with PuTTY on Windows](https://www.digitalocean.com/community/tutorials/how-to-log-into-a-vps-with-putty-windows-users) - DigitalOcean
-3. [How to Install PrestaShop on Ubuntu 16.04](http://idroot.net/linux/install-prestashop-ubuntu-16-04/) - idroot
-4. [One Click Install PrestaShop](https://www.prestashop.com/blog/en/how-to-install-prestashop/) - PrestaShop
-5. [PrestaShop Review](http://whichshoppingcart.com/prestashop.html) - whishshoppingcart
+1. [About HTMLy](https://www.htmly.com/) - HTMLy
+2. [Kelebihan dan kekurangan Magento](https://dosenit.com/kuliah-it/web/kelebihan-dan-kekurangan-magento) - dosenit.com
+3. [HTMLy Documentation](https://github.com/danpros/htmly) - HTMLy docs
