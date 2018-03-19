@@ -260,7 +260,7 @@ Cara pemakaian **HTMLy** ini sangat mudah, karena aplikasi ini menyediakan *inte
     
 
 8. Menu **Config** digunakan untuk mengatur tampilan Blog.
-	- ![5](31.PNG)
+	- ![5](31.png)
    
 
 9. Menu **Logout** untuk keluar dari akun blog kita. Berikut ini tampilan setelah keluar dari blog.
