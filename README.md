@@ -199,12 +199,10 @@ Cara pemakaian **HTMLy** ini sangat mudah, karena aplikasi ini menyediakan *inte
 
     ![1](image/1.PNG)
 
-2.Setelah mengisi username dan password selanjutnya kita akan masuk ke halaman *Home*. Di halaman *Home* kita bisa langsung membuat 
-
+2.Setelah mengisi username dan password selanjutnya kita akan masuk ke halaman *Home*. Di halaman *Home* kita bisa langsung membuat post blog. 
     ![2](image/3.PNG)
-    
     ![3](image/4.PNG)
-
+    
 3.  Berikut ini tampilan setelah kita mencoba membuat post blog di HTMLy
 
 
