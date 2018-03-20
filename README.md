@@ -143,7 +143,7 @@ Set Up mod_rewrite for Apache
 - Untuk memperindah aplikasi, kita dapat mengganti tema dengan :
 	1. Buka laman https://www.htmly.com/download/themes
 	2. pilih tema web yang diinginkan. misal tema *ignite*.
-		![3](image/tema.PNG)
+	   - ![3](image/tema.PNG)
 	3. Download repositorinya
 		```bash
 		$ git clone https://github.com/danpros/htmly-ignite"
@@ -153,8 +153,8 @@ Set Up mod_rewrite for Apache
 		$ mv htmly-ignite ignite
 		```
 	5. Login kembali.
-	Ganti`config key` dengan value `themes/ignite`, kemudian 'submit'. cek menu 'home' untuk melihat perubahan.
-	![4](image/gantitema.png)
+	   Ganti`config key` dengan value `themes/ignite`, kemudian 'submit'. cek menu 'home' untuk melihat perubahan.
+	   - ![4](image/gantitema.png)
 
 # Maintenance
 [`^ kembali ke atas ^`](#)
