@@ -1,3 +1,4 @@
+# New Document
 <h1 align="center"><img src="https://raw.githubusercontent.com/danpros/htmly/master/system/resources/images/logo-big.png"></h1>
 
 [Sekilas Tentang](#sekilas-tentang) | [Instalasi](#instalasi) | [Konfigurasi](#konfigurasi) | [Otomatisasi](#otomatisasi) | [Cara Pemakaian](#cara-pemakaian) | [Pembahasan](#pembahasan) | [Referensi](#referensi)
@@ -134,15 +135,15 @@ Set Up mod_rewrite for Apache
 [`^ kembali ke atas ^`](#)
 
 - Untuk menentukan konfigurasi umum seperti, site url, timezone, title, tagline, deskripsi blog dan pengaturan lainnya kita dapat membuka menu bar **Config** dan mengisi field yang diinginkan. 
-![1](konfig.png)
+![1](image/konfig.png)
 
-![2](isikonfig.png)
+![2](image/isikonfig.png)
 
     
 - Untuk memperindah aplikasi, kita dapat mengganti tema dengan :
 	1. Buka laman https://www.htmly.com/download/themes
 	2. pilih tema web yang diinginkan. misal tema *ignite*.
-		![3](tema.PNG)
+		![3](image/tema.PNG)
 	3. Download repositorinya
 		```bash
 		$ git clone https://github.com/danpros/htmly-ignite"
@@ -153,7 +154,7 @@ Set Up mod_rewrite for Apache
 		```
 	5. Login kembali.
 	Ganti`config key` dengan value `themes/ignite`, kemudian 'submit'. cek menu 'home' untuk melihat perubahan.
-	![4](gantitema.png)
+	![4](image/gantitema.png)
 
 # Maintenance
 [`^ kembali ke atas ^`](#)
@@ -196,69 +197,69 @@ Jika terasa sulit jika diinstal melalui cara sebelumnya, HTMLy juga dapat diinst
 Cara pemakaian **HTMLy** ini sangat mudah, karena aplikasi ini menyediakan *interface* yang sederhana sehingga mudah dimengerti. Berikut untuk lebih jelasnya :
 1. Sebelum menggunakan HTMLy, kita wajib mengisi *username* dan *password*, selebihnya seperti deskripsi singkat tentang Blog yang ingin di buat dan link akun bersifat opsional. 
 
-    ![1](1.PNG)
+    ![1](image/1.PNG)
 
 2.Setelah mengisi username dan password selanjutnya kita akan masuk ke halaman *Home*. Di halaman *Home* kita bisa langsung membuat 
 
-    ![2](3.PNG)
+    ![2](image/3.PNG)
     
-    ![3](4.PNG)
+    ![3](image/4.PNG)
 
 3.  Berikut ini tampilan setelah kita mencoba membuat post blog di HTMLy
 
 
-    ![4](6.PNG)
+    ![4](image/6.PNG)
     
-    ![5](7.PNG)
+    ![5](image/7.PNG)
     
 
 4. Pada tampilan HTMLy di bagian atas terdapat berbagai menu yang dapat kita gunakan. Pada menu Post kita bisa melihat daftar post yang pernah kita buat dan kita juga bisa menambah post.
 
-	![6](5.PNG)
+	![6](image/5.PNG)
 
 5. Menu **Add Content** berisi kategori post, kita bisa membuat post sesuai dengan kebutuhan yang kita inginkan. **Regular post** untuk memposting tulisan biasa. **Image post** untuk memposting tulisan yang bisa disisipi gambar. **Video post** untuk memposting tulisan yang bisa disisipi video. **Audio post** untuk memposting tulisan yang bisa disisipi audio. **Link Post** untuk memposting tulisan yang bisa disisipi dengan *featured link*. **Quote post** untuk memposting tulisan yang bisa disisipi dengan *featured Quote*. **Static page** untuk membuat halaman statis.
 
-	![7](8.PNG)
+	![7](image/8.PNG)
 
 	Berikut tampilan Image post
-    - ![6](9.PNG)
+    - ![6](image/9.PNG)
    
-    - ![7](10.PNG)
+    - ![7](image/10.PNG)
     
     Berikut tampilan Video post
-    - ![8](11.PNG)
+    - ![8](image/11.PNG)
     
-    - ![9](12.PNG)
+    - ![9](image/12.PNG)
     Berikut tampilan Audio post
-    - ![5](13.PNG)
-    - ![5](14.PNG)
+    - ![5](image/13.PNG)
+    - ![5](image/14.PNG)
     Berikut tampilan Link post
-    - ![5](15.PNG)
-    - ![5](16.PNG)
+    - ![5](image/15.PNG)
+    - ![5](image/16.PNG)
     Berikut tampilan Quote post
-	- ![5](17.PNG)
-    - ![5](18.PNG)
+	- ![5](image/17.PNG)
+    - ![5](image/18.PNG)
 
 
 6. Menu **Categories**, kita bisa menambah kategori untuk postingan kita dengan tujuan tulisan bisa di kelompokan sesuai dengan kategori yang diinginkan. 
-	- ![5](20.PNG)
-    - ![5](23.PNG)
-    - ![5](24.PNG)
+	- ![5](image/20.PNG)
+    - ![5](image/23.PNG)
+    - ![5](image/24.PNG)
     
 
 7. Menu **Edit Profile** digunakan untuk mengedit profile. Pada halaman ini tidak ada foto profile user  melainkan hanya ada edit judul blog dan penjelasan tentang blog.
 
-  	- ![5](25.PNG)
-    - ![5](26.PNG)
-    - ![5](27.PNG)
+  	- ![5](image/25.PNG)
+    - ![5](image/26.PNG)
+    - ![5](image/27.PNG)
     
 
 8. Menu **Config** digunakan untuk mengatur tampilan Blog.
-	- ![5](31.png)
+	- ![5](image/31.png)
    
 
 9. Menu **Logout** untuk keluar dari akun blog kita. Berikut ini tampilan setelah keluar dari blog.
-	- ![5](30.PNG)
+	- ![5](image/30.PNG)
 
   
 
